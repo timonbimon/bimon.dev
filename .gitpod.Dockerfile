@@ -8,4 +8,4 @@ RUN sudo apt-get update && \
 RUN git clone https://github.com/timonbimon/dotfiles .dotfiles
 RUN rm /home/gitpod/.zshrc
 RUN /home/gitpod/.dotfiles/install
-# RUN /home/gitpod/.dotfiles/brew.sh
+RUN yes | source /home/gitpod/.dotfiles/brew.sh
