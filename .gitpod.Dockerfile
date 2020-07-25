@@ -11,5 +11,5 @@ RUN whoami
 RUN pwd
 RUN cat /home/gitpod/.zshrc
 RUN rm /home/gitpod/.zshrc
-RUN /home/gitpod/.dotfiles/install
+# RUN /home/gitpod/.dotfiles/install
 RUN /home/gitpod/.dotfiles/brew.sh
