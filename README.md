@@ -7,7 +7,7 @@ The source code for https://bimon.dev, my personal website. Feel free to use the
 ## Code
 
 Built with [Next.js](https://nextjs.org/) and deployed on [Vercel](https://vercel.com/).
-Styling done with [Theme UI](https://theme-ui.com/).
+Styling done with [Theme UI](https://theme-ui.com/). The icons are from [Feather](https://github.com/feathericons/feather).
 
 # Inspiration
 

@@ -5,7 +5,6 @@ import { ThemeProvider } from 'theme-ui'
 // import future from '@theme-ui/preset-future'
 // import wp2016 from 'typography-theme-wordpress-2016'
 
-// import App from "next/app";
 import type { AppProps /*, AppContext */ } from 'next/app'
 
 // const theme = merge(future, {
@@ -13,9 +12,23 @@ import type { AppProps /*, AppContext */ } from 'next/app'
 //       background: '#fff'
 //     },
 //   })
+
 const theme = {
   colors: {
-    background: '#fff',
+    text: '#4A4A4A',
+    background: '#FFF',
+    primary: '#61AFE0',
+    secondary: '#EB465C',
+    accent: '#62B85A',
+    muted: '#F2F4F4',
+    blue: '#61AFE0',
+    red: '#EB465C',
+    green: '#62B85A',
+  },
+  styles: {
+    root: {
+      border: 'solid muted',
+    },
   },
 }
 

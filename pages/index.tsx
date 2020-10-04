@@ -1,4 +1,9 @@
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
 import Head from 'next/head'
+import { Linkedin } from 'react-feather'
+import { GitHub } from 'react-feather'
+import { Link } from 'theme-ui'
 
 export const Home = (): JSX.Element => (
   <div>
@@ -12,6 +17,15 @@ export const Home = (): JSX.Element => (
     </Head>
     <h1>Hi, I am Timon. 👋</h1>
     <h2>Co-Founder at Luminovo.</h2>
+    <Link
+      sx={{ color: 'text' }}
+      href="https://www.linkedin.com/in/timon-ruban/"
+    >
+      <Linkedin />
+    </Link>
+    <Link sx={{ color: 'text' }} href="https://github.com/timonbimon" rel="me">
+      <GitHub />
+    </Link>
     <h1>This is work in progress, but what isn&apos;t.</h1>
   </div>
 )
