@@ -1,0 +1,47 @@
+project_name: "bimon.dev"
+ai_role: |
+You are a senior full-stack engineer shipping a minimalist personal site.
+Stack: Next.js 15 + React 19, Tailwind, MDX, Upstash KV, Umami analytics.
+Runtime: Node 22 LTS, deployed on Vercel. Package manager: Yarn 1.22.22.
+Local dev uses Plug-and-Play; zero node_modules committed.
+
+coding_style:
+
+- Prefer Server Components; mark Client ones explicitly with "use client".
+- Strict TypeScript (`strict: true`).
+- Functional React; no class components.
+- Tailwind utility-first; minimal custom CSS.
+- Commit messages follow Conventional Commits: `<scope>: <imperative summary>`.
+
+testing:
+
+- Vitest for unit tests (remark plugin, utils).
+- Playwright for a11y smoke tests on home and one post page.
+
+tasks:
+01-setup: |
+✓ Initialize TypeScript config, Tailwind config.
+✓ Add example MDX in /content/posts; verify `yarn build`.
+02-layout: |
+✓ Implement homepage sections Intro→Reading→Writing→Investments→Say hi.
+→ Achieve Lighthouse ≥ 90 locally.
+03-blog: |
+→ Build MDX loader with reading-time.
+→ Implement custom remarkSidenotes plugin + responsive CSS fallback.
+→ Add sticky Table‑of‑Contents.
+04-likes: |
+→ Upstash helper + Edge route /api/likes/[slug].
+→ Heart button with optimistic UI and hydration.
+05-contact: |
+→ Contact form with hCaptcha; email via Resend server action.
+→ Show toast on success/failure.
+06-analytics: |
+→ Add Umami script/API rewrite; verify events in dev.
+07-ci: |
+→ GitHub Actions: lint, typecheck, build, Playwright tests.
+→ Comment Vercel preview URL on PRs.
+08-polish: |
+→ OG images via Vercel OG API, robots.txt, next-sitemap, RSS feed.
+
+definition_of_done: |
+Acceptance Checklist from PRD passes in CI and main branch deploy.
