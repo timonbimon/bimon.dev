@@ -5,9 +5,11 @@ import readingTime from "reading-time";
 export interface BlogPost {
   slug: string;
   title: string;
-  date: string;
+  subtitle?: string; // Optional subtitle
+  firstPublished: string;
+  lastEdited?: string; // Optional: can be the same as firstPublished if not edited
   readTime: number;
-  // Optionally add subtitle, canonical, etc. if present in frontmatter
+  // Optionally add canonical, etc. if present in frontmatter
 }
 
 export async function getBlogPosts(): Promise<BlogPost[]> {
@@ -27,13 +29,19 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
     posts.push({
       slug,
       title: frontmatter.title,
-      date: frontmatter.date,
+      subtitle: frontmatter.subtitle, // Will be undefined if not present
+      firstPublished: frontmatter.firstPublished,
+      lastEdited: frontmatter.lastEdited,
       readTime: Math.max(1, Math.round(stats.minutes)),
       // Add more fields as needed
     });
   }
 
-  // Sort by date descending
-  posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  // Sort by firstPublished date descending
+  posts.sort(
+    (a, b) =>
+      new Date(b.firstPublished).getTime() -
+      new Date(a.firstPublished).getTime()
+  );
   return posts;
 }

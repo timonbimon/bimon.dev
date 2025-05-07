@@ -14,7 +14,7 @@ export default async function BlogPostList() {
         >
           <Link href={`/blog/${post.slug}`} className="group">
             <div className="flex items-center text-lg text-gray-500 mb-1">
-              <span>{formatDate(post.date)}</span>
+              <span>{formatDate(post.firstPublished)}</span>
               <span className="mx-2">·</span>
               <span>{post.readTime} min read</span>
             </div>
