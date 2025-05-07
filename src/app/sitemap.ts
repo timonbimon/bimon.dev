@@ -1,7 +1,7 @@
 import { getBlogPosts } from "@/lib/mdx";
 import { MetadataRoute } from "next";
 
-const BASE_URL = "https://bimon.dev";
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://bimon.dev";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await getBlogPosts();
