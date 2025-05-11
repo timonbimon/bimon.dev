@@ -50,6 +50,7 @@ const withMDX = createMDX({
       [remarkFrontmatter, ["yaml"]],
       [mdxFrontmatter, { name: "frontmatter" }],
       [remarkGfm],
+      // @ts-expect-error: type mismatch with remark-attributes and unified/next-mdx
       [remarkAttributes, { mdx: true }],
     ],
     rehypePlugins: [
