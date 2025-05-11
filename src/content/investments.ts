@@ -34,8 +34,7 @@ export const investments: Investment[] = [
   {
     name: "Tendara",
     url: "https://tendara.ai/",
-    description:
-      "helps government contractors find, analyse & win more public tenders",
+    description: "helps you find, analyse & win more public tenders",
   },
   {
     name: "Kuro",
