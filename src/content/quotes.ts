@@ -135,6 +135,18 @@ The day they decided that Sneetches are Sneetches 
 And no kind of Sneetch is the best on the beaches.  `,
     author: "Dr. Seuss",
     context: "The Sneetches",
+    url: "https://bowmanatbrooks.weebly.com/uploads/8/3/8/3/8383240/the-sneetches.pdf",
+  },
+  {
+    text: `The time has come,' the Walrus said,
+      To talk of many things:
+Of shoes — and ships — and sealing-wax —
+      Of cabbages — and kings —
+And why the sea is boiling hot —
+      And whether pigs have wings.'`,
+    author: "Lewis Carroll",
+    context: "The Walrus and the Carpenter",
+    url: "https://www.poetryfoundation.org/poems/43914/the-walrus-and-the-carpenter-56d222cbc80a9",
   },
   {
     text: `"You are old," said the youth, "and your jaws are too weak  
@@ -147,7 +159,7 @@ Yet you finished the goose, with the bones and the beak—
 And the muscular strength, which it gave to my jaw,  
     Has lasted the rest of my life." `,
     author: "Lewis Carroll",
-    context: "You are old, Father William",
+    context: "Father William",
   },
   {
     text: `Als sie einander acht Jahre kannten

@@ -6,6 +6,8 @@ import remarkFrontmatter from "remark-frontmatter";
 import mdxFrontmatter from "remark-mdx-frontmatter";
 import remarkGfm from "remark-gfm";
 import rehypeSidenotes from "@jrsinclair/rehype-sidenotes";
+import rehypeImageCaption from "rehype-image-caption";
+import remarkAttributes from "remark-attributes";
 // import remarkSidenotes from "./plugins/remarkSidenotes"; // to be added
 
 const nextConfig: NextConfig = {
@@ -48,12 +50,13 @@ const withMDX = createMDX({
       [remarkFrontmatter, ["yaml"]],
       [mdxFrontmatter, { name: "frontmatter" }],
       [remarkGfm],
-      // [remarkSidenotes], // to be added
+      [remarkAttributes, { mdx: true }],
     ],
     rehypePlugins: [
       [rehypeSlug],
       [rehypeAutolinkHeadings, { behavior: "append" }],
       [rehypeSidenotes],
+      [rehypeImageCaption, { wrapImagesWithoutCaptions: true }],
     ],
   },
 });

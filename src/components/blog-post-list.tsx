@@ -1,26 +1,35 @@
 import Link from "next/link";
-import { getBlogPosts } from "@/lib/mdx";
-import { formatDate } from "@/lib/utils";
+import { BlogPost } from "@/lib/mdx";
 
-export default async function BlogPostList() {
-  const posts = await getBlogPosts();
+interface BlogPostListProps {
+  posts?: BlogPost[];
+  textSize?: "xl" | "l";
+}
 
+export default function BlogPostList({
+  posts = [],
+  textSize = "xl",
+}: BlogPostListProps) {
+  const titleClass = textSize === "xl" ? "text-xl" : "text-l";
+  const listSpacing = textSize === "xl" ? "space-y-5" : "space-y-3";
   return (
-    <ul className="space-y-5">
+    <ul className={listSpacing}>
       {posts.map((post) => (
-        <li
-          key={post.slug}
-          className="border-b border-gray-200 last:border-b-0 pb-4"
-        >
+        <li key={post.slug}>
           <Link href={`/blog/${post.slug}`} className="group">
-            <div className="flex items-center text-lg text-gray-500 mb-1">
-              <span>{formatDate(post.firstPublished)}</span>
-              <span className="mx-2">·</span>
-              <span>{post.readTime} min read</span>
+            <div
+              className={`flex flex-col lg:flex-row items-start lg:items-center font-medium mb-1 ${titleClass}`}
+            >
+              <span className="text-blue-600 group-hover:text-blue-800 transition-colors">
+                {post.title}
+              </span>
+              <span className="hidden lg:inline mx-0 lg:mx-2 text-gray-400">
+                ·
+              </span>
+              <span className="text-base text-gray-500 lg:ml-0">
+                {post.readTime} min read
+              </span>
             </div>
-            <h3 className="text-xl font-medium group-hover:text-blue-600 transition-colors">
-              {post.title}
-            </h3>
           </Link>
         </li>
       ))}

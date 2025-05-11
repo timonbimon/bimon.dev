@@ -2,8 +2,10 @@ import Link from "next/link";
 import RandomQuote from "@/components/random-quote";
 import BlogPostList from "@/components/blog-post-list";
 import InvestmentList from "@/components/investment-list";
+import { getBlogPosts } from "@/lib/mdx";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const posts = await getBlogPosts();
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -70,7 +72,7 @@ export default function HomePage() {
       <section className="py-4 px-6 md:px-12 flex justify-center">
         <div className="max-w-[70ch] w-full">
           <h2 className="text-4xl font-bold mb-5">Writing</h2>
-          <BlogPostList />
+          <BlogPostList posts={posts} textSize="xl" />
         </div>
       </section>
 

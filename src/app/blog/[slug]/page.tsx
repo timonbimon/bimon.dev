@@ -2,18 +2,69 @@ import { notFound } from "next/navigation";
 import { formatDate } from "@/lib/utils";
 import { extractToc } from "@/lib/toc";
 import { TableOfContents } from "@/components/table-of-contents";
-import readingTime from "reading-time";
-import fs from "fs";
 import path from "path";
 import FootnotePopoversClient from "@/components/footnote-popovers-client";
 import SidenoteShowMore from "@/components/sidenote-show-more";
 import Logo from "@/components/logo";
 import BlogPostFooterForm from "@/components/blog-post-footer-form";
+import {
+  getRawMdxContentWithoutFrontmatter,
+  calculateReadingTime,
+} from "@/lib/content-utils";
+import { getBlogPostBySlug, getBlogPosts, BlogPost } from "@/lib/mdx";
+import type { Metadata, ResolvingMetadata } from "next";
+import BlogPostList from "@/components/blog-post-list";
 
 interface BlogPostPageProps {
   params: Promise<{
     slug: string;
   }>;
+}
+
+export async function generateMetadata(
+  { params }: BlogPostPageProps,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getBlogPostBySlug(slug);
+
+  if (!post) {
+    const parentTitle = (await parent).title?.absolute || "Post not found";
+    return {
+      title: parentTitle,
+      description: "This blog post could not be found.",
+    };
+  }
+
+  const siteBaseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://bimon.dev";
+  const postUrl = `${siteBaseUrl}/blog/${slug}`;
+
+  return {
+    title: post.title,
+    description: post.description || post.title,
+    keywords: post.keywords || [],
+    authors: [{ name: "Timon Ruban", url: siteBaseUrl }],
+
+    alternates: {
+      canonical: postUrl,
+    },
+
+    openGraph: {
+      title: post.title,
+      description: post.description || post.title,
+      url: postUrl,
+      type: "article",
+      publishedTime: post.firstPublished,
+      modifiedTime: post.lastEdited || post.firstPublished,
+      authors: [siteBaseUrl],
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description || post.title,
+    },
+  };
 }
 
 export async function generateStaticParams() {
@@ -22,6 +73,19 @@ export async function generateStaticParams() {
   return posts.map((post) => ({
     slug: post.slug,
   }));
+}
+
+function getNextNPosts(posts: BlogPost[], currentSlug: string, n: number) {
+  const currentIndex = posts.findIndex((post) => post.slug === currentSlug);
+  if (currentIndex === -1) return [];
+  const result: BlogPost[] = [];
+  let idx = currentIndex;
+  for (let i = 0; i < n; i++) {
+    idx = (idx + 1) % posts.length;
+    if (posts[idx].slug === currentSlug) break; // avoid infinite loop if only one post
+    result.push(posts[idx]);
+  }
+  return result;
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
@@ -35,36 +99,24 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
-  // Read the raw MDX file content for ToC and reading time
   const filePath = path.join(process.cwd(), "src/content/blog", `${slug}.mdx`);
-  let rawContent = "";
-  try {
-    rawContent = fs.readFileSync(filePath, "utf8");
-  } catch {}
-
-  // Strip YAML frontmatter block if present
-  const contentWithoutFrontmatter = rawContent.replace(
-    /^---[\s\S]*?---\s*/,
-    ""
-  );
-
-  // Extract ToC from content without frontmatter
+  const contentWithoutFrontmatter =
+    getRawMdxContentWithoutFrontmatter(filePath);
   const toc = extractToc(contentWithoutFrontmatter);
-
-  // Calculate reading time
-  const readStats = readingTime(contentWithoutFrontmatter || "");
-  const readTime = Math.max(1, Math.round(readStats.minutes));
+  const readTime = calculateReadingTime(contentWithoutFrontmatter);
+  const posts = await getBlogPosts();
+  const nextPosts = getNextNPosts(posts, slug, 3);
 
   return (
     <article className="min-h-screen bg-background xl:grid xl:grid-cols-[1fr_65ch_1fr] p-8">
       <FootnotePopoversClient />
       <SidenoteShowMore />
-      {/* <div className="max-w-screen-2xl mx-auto">}
-        {/* Header */}
-      {/* <div className="max-w-[65ch] mx-auto px-4 xl:px-8 pt-12">  */}
       <header className="mb-4 xl:mb-6 text-left xl:px-8 col-start-2">
         <Logo />
         <h1 className="text-4xl font-bold mb-2">{frontmatter.title}</h1>
+        {frontmatter.subtitle && (
+          <p className="text-xl text-gray-600 mb-4">{frontmatter.subtitle}</p>
+        )}
         <div className="flex items-center text-gray-500">
           <time dateTime={frontmatter.firstPublished}>
             {formatDate(frontmatter.firstPublished)}
@@ -78,12 +130,19 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         toc={toc}
       />
       <section className="xl:border-l-2 xl:border-r-2 xl:border-gray-200 xl:px-8 col-start-2">
-        <PostComponent />
+        <PostComponent currentSlug={slug} />
       </section>
       <section className="xl:border-l-2 xl:border-r-2 border-gray-200 xl:px-8 col-start-2 border-t-2">
-        {/* <hr className="border-gray-200 border-t-2 my-8 xl:w-[calc(100%+4rem)] xl:-mx-8" /> */}
         <BlogPostFooterForm postTitle={frontmatter.title} />
       </section>
+      {nextPosts.length > 0 && (
+        <section className="xl:border-l-2 xl:border-r-2 border-gray-200 xl:px-8 col-start-2 border-t-2 pb-8">
+          <span className="text-sm block font-medium mb-4 pt-8">
+            Keep reading
+          </span>
+          <BlogPostList posts={nextPosts} textSize="l" />
+        </section>
+      )}
     </article>
   );
 }

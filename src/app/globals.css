@@ -147,31 +147,12 @@ body {
   target-name: _self;
 }
 
-/* Styles for rehype-autolink-headings */
-.icon-link {
-  margin-left: 0.25em; /* Adjust as needed */
-  opacity: 0.5;
-  transition: opacity 0.2s ease-in-out;
-  text-decoration: none; /* Ensure the # isn't underlined by default if the <a> is */
-}
 
 .icon-link::before {
   content: "#";
   color: currentColor; /* Inherits color from parent <a> tag */
 }
 
-/* Show link more clearly on hover of the heading itself */
-h1:hover .icon-link,
-h2:hover .icon-link,
-h3:hover .icon-link,
-h4:hover .icon-link,
-h5:hover .icon-link,
-h6:hover .icon-link {
-  opacity: 1;
-}
-
-/* If you want the link to only appear on hover of the heading */
-/*
 .icon-link {
   opacity: 0;
   margin-left: 0.25em;
@@ -188,8 +169,6 @@ h6:hover .icon-link {
   opacity: 1;
 }
 
-.icon-link::before {
-  content: "#";
-  color: currentColor;
+.data-footnote-backref {
+  display: none !important;
 }
-*/
