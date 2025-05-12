@@ -6,7 +6,6 @@ import path from "path";
 import FootnotePopoversClient from "@/components/footnote-popovers-client";
 import SidenoteShowMore from "@/components/sidenote-show-more";
 import Logo from "@/components/logo";
-import BlogPostFooterForm from "@/components/blog-post-footer-form";
 import {
   getRawMdxContentWithoutFrontmatter,
   calculateReadingTime,
@@ -14,6 +13,7 @@ import {
 import { getBlogPostBySlug, getBlogPosts, BlogPost } from "@/lib/mdx";
 import type { Metadata, ResolvingMetadata } from "next";
 import BlogPostList from "@/components/blog-post-list";
+import SubscribeForm from "@/components/subscribe-form";
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -133,7 +133,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <PostComponent currentSlug={slug} />
       </section>
       <section className="xl:border-l-2 xl:border-r-2 border-gray-200 xl:px-8 col-start-2 border-t-2">
-        <BlogPostFooterForm postTitle={frontmatter.title} />
+        <SubscribeForm postTitle={frontmatter.title} />
       </section>
       {nextPosts.length > 0 && (
         <section className="xl:border-l-2 xl:border-r-2 border-gray-200 xl:px-8 col-start-2 border-t-2 pb-8">
