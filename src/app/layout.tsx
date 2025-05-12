@@ -60,6 +60,35 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/images/favicon.ico" />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/images/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/images/favicon-16x16.png"
+        />
+        <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="192x192"
+          href="/images/android-chrome-192x192.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="512x512"
+          href="/images/android-chrome-512x512.png"
+        />
+        <link rel="manifest" href="/manifest.json" />
+      </head>
       <body
         className={`${inter.className} bg-background text-foreground dark:bg-black dark:text-white`}
       >
