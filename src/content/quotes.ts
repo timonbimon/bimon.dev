@@ -174,4 +174,34 @@ Da weinte sie schließlich. Und er stand dabei.`,
     author: "Erich Kästner",
     context: "Sachliche Romanze",
   },
+  {
+    text: `Finally, the Duchess declared I shouldn't write anything nasty in her book and I said I wouldn't write anything in her nasty book, so there wasn't a wide point of difference between us.`,
+    author: "Saki",
+    context: "Reginald's Rubaiyat",
+  },
+  {
+    text: `[He] spoke of several duchesses as if he knew them—in his more inspired moments almost as if they knew him.`,
+    author: "Saki",
+    context: "Cross Currents",
+  },
+  {
+    text: `Major Pallaby was a victim of circumstances, over which he had no control, and of his temper, over which he had very little.`,
+    author: "Saki",
+    context: "The Bag",
+  },
+  {
+    text: `Bryan and I, Teka announced, were exactly like every other “beach bum” in California, Florida, and Hawaii. We had no goals, no cares for tomorrow. Our type could be found “especially at Waikiki Beach,” she said. “If there was an earthquake, you wouldn’t worry about your house or your car. You’d just say, ‘Oh, wow, a new experience.’"`,
+    author: "William Finnegan",
+    context: "Barbarian Days",
+  },
+  {
+    text: `One night, lit with kava courage, I announced that I was sick of walking on eggs around him. He announced, astonished, that he was sick of walking on eggs around me . We hiked back to camp under a gibbous moon in a jolly mood. I said I hoped his tent was full of scorpions. He hoped I fell out of my hammock. The expression, anyway, was walking on eggshells, not eggs.`,
+    author: "William Finnegan",
+    context: "Barbarian Days",
+  },
+  {
+    text: `“But surely one has to pay one’s debts.”`,
+    author: "David Graber",
+    context: "Debt, The first 5000 years",
+  }
 ];

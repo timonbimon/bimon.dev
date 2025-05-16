@@ -54,14 +54,14 @@ export default async function HomePage() {
           <h2 className="text-4xl font-bold mb-5">Reading</h2>
           <p className="text-xl mb-4">
             I read a lot in my free time and post reviews of all books that I
-            read. You can find them on my favorite social network{" "}
+            read. You can find them on my{" "}
             <Link
               href="https://www.goodreads.com/user/show/82383663-timon-ruban"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:text-blue-800"
             >
-              here
+              favorite social network
             </Link>
             .
           </p>
