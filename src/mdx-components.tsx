@@ -70,10 +70,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       );
     },
     ul: (props) => (
-      <ul className="my-6 ml-6 list-disc [&>li]:mt-2" {...props} />
+      <ul className="mb-5 ml-6 list-disc [&>li]:mt-2" {...props} />
     ),
     ol: (props) => (
-      <ol className="my-6 ml-6 list-decimal [&>li]:mt-2" {...props} />
+      <ol className="my-6 ml-6 list-decimal" {...props} />
     ),
     li: (props) => <li className="marker:text-gray-500" {...props} />,
     ...components,

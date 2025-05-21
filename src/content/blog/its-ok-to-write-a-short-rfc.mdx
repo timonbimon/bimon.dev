@@ -1,0 +1,108 @@
+---
+title: It's OK to write a short RFC
+subtitle: The best tool for better decision-making
+description: Write down your thoughts and ask other people for asynchronous feedback. RFCs help you make better decisions and learn from the bad ones. It's OK to write a short one.
+firstPublished: 2025-05-21
+lastEdited: 2025-05-21
+keywords:
+  - leadership
+  - remote
+  - decision-making
+  - asynchronous
+  - writing
+  - RFC
+---
+Building a successful company comes down to repeatedly making good decisions and learning from the bad ones. **R**equest **F**or **C**omments (RFCs) are my favorite decision-making tool that, if used correctly, can help you with both.[^1]
+
+[^1]: The name RFC was coined by Steve Crocker, a UCLA graduate student working on the ARPANET project. In fact, the entire internet protocol suite (TCP/IP, DNS, HTTP, etc.) was developed using RFCs. Steve chose the name to sound non-threatening, so people wouldn't hesitate to share ideas. It stuck.
+
+Most engineers at most companies use RFCs[^2] for technical decision-making. I recommend using it for all your decision-making.
+
+[^2]: In engineering lingo, RFCs are also knows as *Design docs*. They are used at Google, Meta, [you name it](https://blog.pragmaticengineer.com/rfcs-and-design-docs/).
+
+What is an RFC? You *write down your thoughts* about a decision and then *ask other people for asynchronous feedback*.[^3]
+
+[^3]: At Luminovo, we simply have a Notion database that collects all RFCs (and postmortems and other written documentation). 
+
+# Why ask others for their opinion?
+- Different people suffer from different biases and by putting our brains together we can arrive at better decisions than any individual could.
+- It adds transparency and helps with creating buy-in and alignment.
+
+# Why in a written format?
+- Good decisions need good thinking and it's easier to do good thinking silently. Good writing is good thinking.
+- Forcing you to write down your thoughts is a good rubber duck debugging exercise to help you spot faults in your own thinking.
+- Written arguments are easier to dissect and respond to than verbal arguments.[^4]
+[^4]: If there are multiple points made, it's much easier to open and return to different threads in a written conversation than in a verbal one
+- It evens the playing field for extroverts vs introverts.
+- Many of the rhetorical tricks to convince someone of a faulty argument don't work as well in writing.
+- Most decisions that affect multiple people need to be documented anyways (if for nothing else but communicating the decision). My simple heuristic: if you need to communicate a decision to multiple people, you might as well write an RFC.
+- One of the largest impediments to learning how to make better decisions is what’s called "resulting": confusing the quality of an outcome with the quality of a decision. Written documents act as a snapshot of the context and thinking at the time of decision making, helping us to learn and improve as we look back.
+- It’s asynchronous and shines in a remote setting.[^5]
+- Writing scales. Meetings don't.
+
+[^5]: There's a subset of the population that's been successfully collaborating in a distributed and fully remote setting even before a pandemic made remote work mainstream. Open-source developers. From [Rust](https://github.com/rust-lang/rfcs) to [React](https://github.com/reactjs/rfcs), they all use RFCs. 
+
+# “RFCs slow us down.”
+If you’ve seen a long and detailed RFC that lists all possible options of a decision and includes an extensive comparison thereof, you might think to yourself:
+
+> This must have taken a lot of time to write!
+
+And for your own next decision, you might think:
+
+> We need to move fast. Writing RFCs just slows us down.[^6]
+
+And you’re not wrong.
+
+[^6]: This is the most common complaint I hear from people that don't want to write RFCs. These are often people that struggle with writing down their thoughts. Convince them that writing is the most undervalued leadership skill. Then coach them to write better RFCs.
+
+## How fast you should move depends on the consequences of the decision.
+
+> "Some decisions are consequential and irreversible or nearly irreversible—one-way doors—and these decisions must be made methodically, carefully, slowly, with great deliberation and consultation. If you walk through and don’t like what you see on the other side, you can’t get back to where you were before. We can call these Type 1 decisions. But most decisions aren’t like that—they are changeable, reversible—they’re two-way doors. If you’ve made a suboptimal Type 2 decision, you don’t have to live with the consequences for that long. You can reopen the door and go back through. Type 2 decisions can and should be made quickly by high judgment individuals or small groups." 
+> <cite>— Jeff Bezos, Letter to Amazon Shareholders (2015)</cite>
+
+### Higher consequences → move slow
+- it’s hard to reverse
+- many people affected
+- high costs
+- the decision is for the long-term
+- all options are tradeoffs
+
+### Lower consequences → move fast
+- it's easily reversible
+- few people affected
+- lower costs
+- the decision repeats
+- all your options are good
+
+# When should I write an RFC?
+There's no hard and fast rule, but basically
+- if it's easily reversible, doesn't cost a lot, and only affects a few people → you don’t need an RFC.
+- For everything else, an RFC is usually a good idea.
+
+A common misconception is that RFCs always need to be long and well-written. That’s not true. An RFC can be super short. Just write down in a sentence or two what the problem is that needs a decision, and then put down the recommended solution. Your main goal is to transmit clarity of thought. I've seen great RFCs consisting solely of bullet points.[^7]
+
+[^7]: Don't cave to the temptation to let ChatGPT expand your bullet points.
+
+Only for high-consequence decisions does it make sense to slow down and take more time with the decision process (and write a longer RFC).
+
+Here are two templates to help you get started. I use the short template or no template at all for 90% of my RFCs.
+
+### Short RFC template → for lower consequence decisions
+- Problem: *What made you write this RFC?*
+- Solution: *What do you propose and why?*
+
+### Long RFC template → for higher consequence decisions
+- Situation: _What are the basic facts and background that bring us to needing a decision?_
+- Options: _What are the potential things we could do?_
+- Criteria: _The ways/criteria that you will use to compare these options. If helpful, state non-goals (criteria that are irrelevant) as well._
+- Comparison: _The actual nitty-gritty of the comparison._
+- Recommendation: _Your final recommendation._
+# Who should write an RFC?
+Anyone! RFCs do not imply “design by committee”. Asking other people for their opinion does not mean that you need consensus to make a decision. Notably, the person writing the RFC does not need to be the person making the decision. RfCs are about alignment not about consensus.
+
+# When emotions run high, combine RFCs with in-person meetings
+- If you have a decision with a lot of consequences, it’s usually best to start with an RFC and then follow it up with a meeting with the most relevant people, to make sure no thoughts get lost in translation.[^8]
+[^8]: I've seen (and participated my fair share) in misunderstandings that escalated in long written threads that could have easily be resolved in a short 15 minute conversation. 
+- If you can already anticipate that a decision will involve lots of emotions, it might be even better to start with a meeting and then follow it up with an RFC. 
+- Another option to bridge the writing-speaking-chasm is adding videos (like a Loom) to your RFCs. This can help with getting the emotions and context of a decision across or if you struggle with putting your thoughts into writing in a short amount of time.[^9]
+[^9]: Don't do video only because it's much harder to comment and collaborate on a video than a written document.

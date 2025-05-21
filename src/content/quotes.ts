@@ -195,7 +195,7 @@ Da weinte sie schließlich. Und er stand dabei.`,
     context: "Barbarian Days",
   },
   {
-    text: `One night, lit with kava courage, I announced that I was sick of walking on eggs around him. He announced, astonished, that he was sick of walking on eggs around me . We hiked back to camp under a gibbous moon in a jolly mood. I said I hoped his tent was full of scorpions. He hoped I fell out of my hammock. The expression, anyway, was walking on eggshells, not eggs.`,
+    text: `One night, lit with kava courage, I announced that I was sick of walking on eggs around him. He announced, astonished, that he was sick of walking on eggs around me. We hiked back to camp under a gibbous moon in a jolly mood. I said I hoped his tent was full of scorpions. He hoped I fell out of my hammock. The expression, anyway, was walking on eggshells, not eggs.`,
     author: "William Finnegan",
     context: "Barbarian Days",
   },

@@ -1,6 +1,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 import Slugger from 'github-slugger';
+import chokidar from 'chokidar';
 
 const OBSIDIAN_BLOG_DIR = '/Users/timon/Library/Mobile Documents/iCloud~md~obsidian/Documents/Notes/blog';
 const CONTENT_BLOG_DIR = path.join(process.cwd(), 'src/content/blog');
@@ -31,38 +32,53 @@ function transformImagePaths(content) {
   );
 }
 
-async function copyAndTransformBlogPost(title) {
+async function copyAndTransformBlogPostFile(sourceFile) {
   try {
-    // Ensure the content directory exists
     await fs.mkdir(CONTENT_BLOG_DIR, { recursive: true });
-
-    const sourcePath = path.join(OBSIDIAN_BLOG_DIR, `${title}.md`);
+    const title = path.basename(sourceFile, '.md');
+    const sourcePath = path.join(OBSIDIAN_BLOG_DIR, sourceFile);
     const targetPath = path.join(CONTENT_BLOG_DIR, `${title}.mdx`);
-
-    // Read the source file
     const content = await fs.readFile(sourcePath, 'utf-8');
-
-    // Apply transformations
     let transformedContent = content;
     transformedContent = transformInternalLinks(transformedContent);
     transformedContent = transformImagePaths(transformedContent);
-
-    // Write the transformed content
     await fs.writeFile(targetPath, transformedContent, 'utf-8');
-
-    console.log(`✅ Successfully copied and transformed "${title}" to ${targetPath}`);
+    console.log(`✅ Copied and transformed "${title}" to ${targetPath}`);
   } catch (error) {
-    console.error('❌ Error:', error.message);
+    console.error(`❌ Error copying ${sourceFile}:`, error.message);
+  }
+}
+
+async function copyAllBlogPosts() {
+  try {
+    await fs.mkdir(CONTENT_BLOG_DIR, { recursive: true });
+    const files = await fs.readdir(OBSIDIAN_BLOG_DIR);
+    const mdFiles = files.filter((f) => f.endsWith('.md'));
+    await Promise.all(mdFiles.map(copyAndTransformBlogPostFile));
+    console.log(`✅ All blog posts copied and transformed.`);
+  } catch (error) {
+    console.error('❌ Error copying blog posts:', error.message);
     process.exit(1);
   }
 }
 
-// Get the blog post title from command line arguments
-const title = process.argv[2];
-if (!title) {
-  console.error('❌ Please provide a blog post title');
-  console.error('Usage: yarn copy-blog-from-obsidian "title-of-blogpost"');
-  process.exit(1);
+async function watchBlogDir() {
+  console.log('👀 Watching for changes in Obsidian blog directory...');
+  const watcher = chokidar.watch(OBSIDIAN_BLOG_DIR, {
+    ignoreInitial: false,      
+    usePolling: true,
+    interval: 500,
+  });
+  watcher.on('change', (filePath) => {
+    copyAndTransformBlogPostFile(path.basename(filePath));
+  });
 }
 
-copyAndTransformBlogPost(title); 
+const watchMode = process.argv.includes('--watch');
+
+if (watchMode) {
+  // await copyAllBlogPosts();
+  await watchBlogDir();
+} else {
+  await copyAllBlogPosts();
+} 
