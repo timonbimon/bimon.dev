@@ -51,4 +51,9 @@ export const investments: Investment[] = [
     url: "https://knowlix.ai/",
     description: "zero-ops for small businesses",
   },
+  {
+    name: "avoltra",
+    url: "https://www.avoltra.io/",
+    description: "industrial energy procurement intelligence",
+  }
 ];

@@ -79,7 +79,7 @@ export default async function HomePage() {
       {/* Investments Section */}
       <section className="py-4 px-6 md:px-12 flex justify-center">
         <div className="max-w-[70ch] w-full">
-          <h2 className="text-4xl font-bold mb-5">Investments</h2>
+          <h2 className="text-4xl font-bold mb-5">Investing</h2>
           <p className="text-xl mb-6">
             I invest 10–25 k EUR tickets into very early-stage startups.
             Preferably vertical AI-enabled software companies, because
