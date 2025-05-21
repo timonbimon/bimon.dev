@@ -24,11 +24,11 @@ What is an RFC? You *write down your thoughts* about a decision and then *ask ot
 
 [^3]: At Luminovo, we simply have a Notion database that collects all RFCs (and postmortems and other written documentation). 
 
-# Why ask others for their opinion?
+## Why ask others for their opinion?
 - Different people suffer from different biases and by putting our brains together we can arrive at better decisions than any individual could.
 - It adds transparency and helps with creating buy-in and alignment.
 
-# Why in a written format?
+## Why in a written format?
 - Good decisions need good thinking and it's easier to do good thinking silently. Good writing is good thinking.
 - Forcing you to write down your thoughts is a good rubber duck debugging exercise to help you spot faults in your own thinking.
 - Written arguments are easier to dissect and respond to than verbal arguments.[^4]
@@ -42,7 +42,7 @@ What is an RFC? You *write down your thoughts* about a decision and then *ask ot
 
 [^5]: There's a subset of the population that's been successfully collaborating in a distributed and fully remote setting even before a pandemic made remote work mainstream. Open-source developers. From [Rust](https://github.com/rust-lang/rfcs) to [React](https://github.com/reactjs/rfcs), they all use RFCs. 
 
-# “RFCs slow us down.”
+## “RFCs slow us down.”
 If you’ve seen a long and detailed RFC that lists all possible options of a decision and includes an extensive comparison thereof, you might think to yourself:
 
 > This must have taken a lot of time to write!
@@ -74,7 +74,7 @@ And you’re not wrong.
 - the decision repeats
 - all your options are good
 
-# When should I write an RFC?
+## When should I write an RFC?
 There's no hard and fast rule, but basically
 - if it's easily reversible, doesn't cost a lot, and only affects a few people → you don’t need an RFC.
 - For everything else, an RFC is usually a good idea.
@@ -97,10 +97,10 @@ Here are two templates to help you get started. I use the short template or no t
 - Criteria: _The ways/criteria that you will use to compare these options. If helpful, state non-goals (criteria that are irrelevant) as well._
 - Comparison: _The actual nitty-gritty of the comparison._
 - Recommendation: _Your final recommendation._
-# Who should write an RFC?
+## Who should write an RFC?
 Anyone! RFCs do not imply “design by committee”. Asking other people for their opinion does not mean that you need consensus to make a decision. Notably, the person writing the RFC does not need to be the person making the decision. RfCs are about alignment not about consensus.
 
-# When emotions run high, combine RFCs with in-person meetings
+## When emotions run high, combine RFCs with in-person meetings
 - If you have a decision with a lot of consequences, it’s usually best to start with an RFC and then follow it up with a meeting with the most relevant people, to make sure no thoughts get lost in translation.[^8]
 [^8]: I've seen (and participated my fair share) in misunderstandings that escalated in long written threads that could have easily be resolved in a short 15 minute conversation. 
 - If you can already anticipate that a decision will involve lots of emotions, it might be even better to start with a meeting and then follow it up with an RFC. 

@@ -46,4 +46,9 @@ export const investments: Investment[] = [
     url: "https://www.chipflow.io/",
     description: "open-source chip design platform",
   },
+  {
+    name: "Knowlix",
+    url: "https://knowlix.ai/",
+    description: "zero-ops for small businesses",
+  },
 ];
