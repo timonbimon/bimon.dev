@@ -174,15 +174,12 @@ h6:hover .icon-link {
 }
 
 /* Remove extra margins and padding when footnotes appear in the middle of lists */
-ul + aside[role="doc-footnote"] {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-}
 ul:has(+ aside[role="doc-footnote"]) {
   margin-bottom: 0 !important;
   padding-bottom: 0 !important;
 }
-aside[role="doc-footnote"] + ul {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
+@media (max-width: 1279px) {
+  ul + aside[role="doc-footnote"] {
+    margin-top: 1rem;
+  }
 }
