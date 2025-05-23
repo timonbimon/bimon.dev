@@ -24,13 +24,13 @@ export function TableOfContents({
 
   return (
     <nav {...props}>
-      <ul className="w-full">
+      <ul className="max-w-[30ch]">
         {toc.map((heading) => (
           <li
             key={heading.id}
             className={depthToMargin[getAdjustedDepth(heading.depth)]}
           >
-            <a href={`#${heading.id}`}>{heading.value}</a>
+            <a href={`#${heading.id}`} className="hover:text-blue-600 transition-colors">{heading.value}</a>
           </li>
         ))}
       </ul>
