@@ -131,7 +131,7 @@ body {
   .Sidenote {
     @apply relative hidden pl-4 mb-4 text-sm text-gray-700;
     /* JS toggles !inline-block to show on mobile */
-    @apply xl:block xl:float-right xl:w-80 xl:ml-0 xl:-mr-88 xl:-mt-16 xl:mb-20 xl:clear-right xl:border-l-2 xl:border-blue-400;
+    @apply xl:block xl:float-right xl:w-80 xl:ml-0 xl:-mr-88 xl:-mt-8 xl:mb-12 xl:clear-right xl:border-l-2 xl:border-blue-400;
   }
   .Sidenote-number { @apply font-bold text-blue-400; }
   .Sidenote-small  { @apply text-xs text-gray-500; }
