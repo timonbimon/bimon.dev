@@ -84,42 +84,44 @@ export default function SubscribeForm({
           Leave a message?
         </label>
       </div>
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder={
-          subscribe
-            ? "your@email.com"
-            : "your@email.com (optional but needed if you want a reply)"
-        }
-        className="w-full border border-gray-300 rounded p-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-200"
-        required={subscribe}
-      />
-      {leaveMessage && (
+      {(subscribe || leaveMessage) && (
         <>
-          <textarea
-            value={msg}
-            onChange={(e) => setMsg(e.target.value)}
-            placeholder='"You are all wrong..."'
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder={
+              subscribe
+                ? "your@email.com"
+                : "your@email.com (optional but needed if you want a reply)"
+            }
             className="w-full border border-gray-300 rounded p-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-200"
-            rows={4}
-            required={leaveMessage}
+            required={subscribe}
           />
+          {leaveMessage && (
+            <textarea
+              value={msg}
+              onChange={(e) => setMsg(e.target.value)}
+              placeholder='"You are all wrong..."'
+              className="w-full border border-gray-300 rounded p-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-200"
+              rows={4}
+              required={leaveMessage}
+            />
+          )}
+          <button
+            type="submit"
+            disabled={isDisabled || status === "success"}
+            style={{ display: status === "success" ? "none" : undefined }}
+            className={`px-4 py-2 rounded transition-colors ${
+              isDisabled
+                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                : "bg-blue-600 text-white hover:bg-blue-700"
+            }`}
+          >
+            {status === "loading" ? "Sending..." : buttonLabel}
+          </button>
         </>
       )}
-      <button
-        type="submit"
-        disabled={isDisabled || status === "success"}
-        style={{ display: status === "success" ? "none" : undefined }}
-        className={`px-4 py-2 rounded transition-colors ${
-          isDisabled
-            ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-            : "bg-blue-600 text-white hover:bg-blue-700"
-        }`}
-      >
-        {status === "loading" ? "Sending..." : buttonLabel}
-      </button>
       {status === "success" && (
         <div className="flex items-center">
           <svg
