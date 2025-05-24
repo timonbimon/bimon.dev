@@ -63,6 +63,7 @@ export async function generateMetadata(
       card: "summary",
       title: post.title,
       description: post.description || post.title,
+      images: [`${siteBaseUrl}/opengraph-image`],
     },
   };
 }
