@@ -4188,9 +4188,9 @@ posthog-node@^4.17.1:
     axios "^1.8.2"
 
 preact@^10.19.3:
-  version "10.26.6"
-  resolved "https://registry.yarnpkg.com/preact/-/preact-10.26.6.tgz#388963cc4aa15fceafd65c17fbeddc395fdb0ceb"
-  integrity sha512-5SRRBinwpwkaD+OqlBDeITlRgvd8I8QlxHJw9AxSdMNV6O+LodN9nUyYGpSF7sadHjs6RzeFShMexC6DbtWr9g==
+  version "10.28.2"
+  resolved "https://registry.yarnpkg.com/preact/-/preact-10.28.2.tgz#4b668383afa4b4a2546bbe4bd1747e02e2360138"
+  integrity sha512-lbteaWGzGHdlIuiJ0l2Jq454m6kcpI1zNje6d8MlGAFlYvP2GO4ibnat7P74Esfz4sPTdM6UxtTwh/d3pwM9JA==
 
 prelude-ls@^1.2.1:
   version "1.2.1"
