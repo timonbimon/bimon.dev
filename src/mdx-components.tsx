@@ -76,6 +76,29 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <ol className="my-6 ml-6 list-decimal" {...props} />
     ),
     li: (props) => <li className="marker:text-gray-500" {...props} />,
+    table: (props) => (
+      <div className="my-6 overflow-x-auto">
+        <table
+          className="w-full min-w-[32rem] border-collapse text-left text-sm"
+          {...props}
+        />
+      </div>
+    ),
+    thead: (props) => <thead className="border-b-2 border-gray-300" {...props} />,
+    tbody: (props) => <tbody className="divide-y divide-gray-200" {...props} />,
+    tr: (props) => <tr className="align-top" {...props} />,
+    th: (props) => (
+      <th
+        className="py-3 pr-4 font-semibold text-gray-900 first:pl-0 last:pr-0"
+        {...props}
+      />
+    ),
+    td: (props) => (
+      <td
+        className="py-3 pr-4 text-gray-700 first:pl-0 last:pr-0"
+        {...props}
+      />
+    ),
     ...components,
   };
 }

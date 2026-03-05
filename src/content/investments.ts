@@ -19,7 +19,7 @@ export const investments: Investment[] = [
   {
     name: "Dataleap",
     url: "https://www.dataleap.ai/",
-    description: "chatGPT for market research",
+    description: "The world's first vibe working platform.",
   },
   {
     name: "Sluicebox",
@@ -32,9 +32,9 @@ export const investments: Investment[] = [
     description: "automated quoting",
   },
   {
-    name: "Tendara",
-    url: "https://tendara.ai/",
-    description: "helps you find, analyse & win more public tenders",
+    name: "Needle",
+    url: "https://needle.so/",
+    description: "the self-driving ATS for AI-native teams",
   },
   {
     name: "Kuro",
