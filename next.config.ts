@@ -12,7 +12,6 @@ import remarkAttributes from "remark-attributes";
 
 const nextConfig: NextConfig = {
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
-  // OPTIONAL – if you don't need the Rust compiler, disable it so Turbopack + plugins work
   experimental: { mdxRs: false },
   async rewrites() {
     return [
@@ -43,14 +42,12 @@ const nextConfig: NextConfig = {
 };
 
 const withMDX = createMDX({
-  // This ensures all .mdx files are processed, not just those in /pages or /app
-  extension: /\.mdx?$/,
   options: {
     remarkPlugins: [
       [remarkFrontmatter, ["yaml"]],
       [mdxFrontmatter, { name: "frontmatter" }],
       [remarkGfm],
-      // @ts-expect-error: type mismatch with remark-attributes and unified/next-mdx
+      // @ts-expect-error: remark-attributes types incompatible with unified/next-mdx
       [remarkAttributes, { mdx: true }],
     ],
     rehypePlugins: [

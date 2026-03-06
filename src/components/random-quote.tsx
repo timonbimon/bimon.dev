@@ -23,7 +23,6 @@ export default function RandomQuote() {
 
   useEffect(() => {
     setShuffledQuotes(shuffleArray(quotes));
-    setIndex(0);
   }, []);
 
   const nextQuote = () => {
