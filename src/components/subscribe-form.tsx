@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function SubscribeForm({
   postTitle,
@@ -19,10 +19,6 @@ export default function SubscribeForm({
   else if (subscribe) buttonLabel = "Subscribe";
 
   const isDisabled = (!subscribe && !leaveMessage) || status === "loading";
-
-  useEffect(() => {
-    setStatus(null);
-  }, [subscribe, leaveMessage]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -69,7 +65,10 @@ export default function SubscribeForm({
           <input
             type="checkbox"
             checked={subscribe}
-            onChange={() => setSubscribe((v) => !v)}
+            onChange={() => {
+              setSubscribe((v) => !v);
+              setStatus(null);
+            }}
             className="accent-blue-600"
           />
           Want to hear about new posts?
@@ -78,7 +77,10 @@ export default function SubscribeForm({
           <input
             type="checkbox"
             checked={leaveMessage}
-            onChange={() => setLeaveMessage((v) => !v)}
+            onChange={() => {
+              setLeaveMessage((v) => !v);
+              setStatus(null);
+            }}
             className="accent-blue-600"
           />
           Leave a message?
