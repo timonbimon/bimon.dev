@@ -9,4 +9,5 @@ export interface Investment {
   name: string;
   url: string;
   description: string;
+  badge?: string;
 }

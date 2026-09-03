@@ -5,6 +5,7 @@ export const investments: Investment[] = [
     name: "Gitpod",
     url: "https://www.gitpod.io/",
     description: "development environments for both humans and AI",
+    badge: "acquired by OpenAI",
   },
   {
     name: "Lumos",
